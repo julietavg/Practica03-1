@@ -22,8 +22,24 @@ public class Maze {
       *esta casilla es la que se actualiza, modificando el valor de la casilla actual después del cambio para s*/
     Box actual;
 
+    /**Representan las coordenadas de incio y fin de las casillas en mazeBoard */ //se le solicitaran al usuario
+    private int[] coordInicio, coordFin;
 
 
+
+    /**
+     * Constructor del tablero del laberinto
+     * @param file el archivo que contiene los datos del tablero.
+     */
+    public Maze (String file){
+        ArrayReader ar = new ArrayReader();
+        mazeBoard = ar.readMatrix(file); //Crear tablero a partir de lectura de archivo
+        //actual =  mazeBoard[coordInicio[0]][coordInicio[1]]; //inicio = actual al principio del laberinto.
+        actual =  mazeBoard[0][5]; //inicio = actual al principio del laberinto.
+
+    }
+    
+    
     /**
      * Define si el laberinto está resuelto.
      * @return true si esta resuelto, false en otro caso.
@@ -40,6 +56,22 @@ public class Maze {
     public boolean isExtensible(){
         return false;
     }
+    public  String toString(){
+        Box casilla = null;
+        String drawing = "", coordY = "";
+        for(int n =0 ; n<mazeBoard.length; n++){
+            coordY = (n<9) ? coordY+ " "+  + n + "  "  : coordY +" " + n +" ";
+           
+            for(int k = 0; k<mazeBoard.length; k++){
+
+                casilla = mazeBoard[n][k];
+                drawing+= casilla.getDrawBox();
+            }
+            drawing+="  "+n + "\n";
+
+        }
+        return coordY+"\n"+drawing;
+    }
 
     /**
      * Mueve la casilla actual a una casilla vecina que no sea pared y no haya sido visitada.
@@ -48,6 +80,8 @@ public class Maze {
     public void extend(){
         //----
     }
+    
+    
 
 
     // ***FALTA SOLVE **

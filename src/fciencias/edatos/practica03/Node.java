@@ -1,6 +1,6 @@
 /**
  * Clase que modela las referencias auxiliares para 
- * Stack y Queue
+ * Stack, Queue y probablemente una lista también.
  * @author Reyes Ramos Luz María.
  * @author -----
  * @version 1.0 Octubre 2021

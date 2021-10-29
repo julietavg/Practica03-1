@@ -28,6 +28,12 @@ public class ArrayReader {
             int h = Integer.valueOf(dimensions[0]), w = Integer.valueOf(dimensions[1]);
             Box[][] result = new Box[h][w];
             
+            //Llena el tablero con paredes
+            for(int n =0; n<result.length; n++){
+                for(int k =0; k<result.length; k++){
+                    result[n][k] = new Box(n,k, true);
+                }
+            }
             String line = null;
             int index = 0;
             while((line = reader.readLine()) != null){
@@ -36,7 +42,7 @@ public class ArrayReader {
                 int row = Integer.valueOf(data[0]), column = Integer.valueOf(data[1]);
 
                 // Depende de como definas el constructor de Box ajusta la siguiente linea
-                //result[row][colum] = new Box(row, colum);
+                result[row][column] = new Box(row, column, false);
             }
             
             return result;
